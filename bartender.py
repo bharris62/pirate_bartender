@@ -96,20 +96,19 @@ def present_drink(ingred):
 
 if __name__ == '__main__':
     drink_number = 0
-    while True:
-        if drink_number == 0:
-            preferences(questions, ingredients)
+    if drink_number == 0:
+        preferences(questions, ingredients)
         drink_number += 1
-        if drink_number == 5:
-            print('Ahoy, We are responsible pirates, gotta cut you off! ')
+
+    while True:
+        ans = input("Like another? had {} drink(s) ".format(drink_number))
+        temp_ans = yes_or_no(ans)
+
+        if temp_ans == 'no':
             break
-
-        while True:
-            ans = input("Like another? had {} drink(s) ".format(drink_number))
-            temp_ans = yes_or_no(ans)
-
-            if temp_ans == 'no':
+        else:
+            preferences(questions, ingredients)
+            drink_number += 1
+            if drink_number == 5:
+                print('Ahoy, We are responsible pirates, gotta cut you off! ')
                 break
-            else:
-                preferences(questions, ingredients)
-        break
