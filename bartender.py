@@ -16,13 +16,30 @@ ingredients = {
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
+def yes_or_no(resp):
+
+        try:
+            if resp.lower() == 'y' or resp == 'yes':
+                return 'yes'
+            elif resp.lower() == 'n' or resp == 'no':
+                return 'no'
+            else:
+                print("Remember, yes or no.")
+
+        except ValueError:
+            print("Must be answered in yes or no.")
+
 
 def preferences(questions, ingredients):
     '''determine the drink preference of the pirate'''
     pirate_pref = {}
     print("answer yes or no")
     for idx, val in questions.items():
-        pref = input("{} ".format(val))
+        while True:
+            pref = input("{} ".format(val))
+            check_response = yes_or_no(pref)
+            if check_response == 'yes' or check_response == 'no':
+                break
 
         if pref.lower() == 'yes':
             pirate_pref[idx] = True
@@ -76,13 +93,14 @@ def present_drink(ingred):
 
 
 if __name__ == '__main__':
-    drink_number = 0
+    drink_number = 3
     while True:
         drink_number += 1
         if drink_number == 5:
             print('We are responsible pirates, gotta cut you off! ')
+            break
         preferences(questions, ingredients)
-        ans = input("Like another? had {} drink ".format(drink_number))
+        ans = input("Like another? had {} drink(s) ".format(drink_number))
         if ans.lower() == 'no':
             break
         else:
