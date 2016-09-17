@@ -51,13 +51,13 @@ def preferences(questions, ingredients):
     build_drink(pirate_pref, ingredients)
 
 
-def build_drink(pref, ingredients):
+def build_drink(pref, mix):
     '''accepts preferences and creates a random drink based on them'''
     drink = []
 
     for idx, val in pref.items():
         if val == True:
-            drink.append(random.choice(ingredients[idx]))
+            drink.append(random.choice(mix[idx]))
 
     present_drink(drink)
 
@@ -95,15 +95,21 @@ def present_drink(ingred):
 
 
 if __name__ == '__main__':
-    drink_number = 3
+    drink_number = 0
     while True:
+        if drink_number == 0:
+            preferences(questions, ingredients)
         drink_number += 1
         if drink_number == 5:
-            print('We are responsible pirates, gotta cut you off! ')
+            print('Ahoy, We are responsible pirates, gotta cut you off! ')
             break
-        preferences(questions, ingredients)
-        ans = input("Like another? had {} drink(s) ".format(drink_number))
-        if ans.lower() == 'no':
-            break
-        else:
-            preferences(questions, ingredients)
+
+        while True:
+            ans = input("Like another? had {} drink(s) ".format(drink_number))
+            temp_ans = yes_or_no(ans)
+
+            if temp_ans == 'no':
+                break
+            else:
+                preferences(questions, ingredients)
+        break
