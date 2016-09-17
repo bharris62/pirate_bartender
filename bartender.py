@@ -1,5 +1,6 @@
 import random
 
+
 questions = {
     "strong": "Do ye like yer drinks strong?",
     "salty": "Do ye like it with a salty tang?",
@@ -16,8 +17,9 @@ ingredients = {
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
-def yes_or_no(resp):
 
+def yes_or_no(resp):
+        '''Error checking function, for yes or no questions.'''
         try:
             if resp.lower() == 'y' or resp == 'yes':
                 return 'yes'
