@@ -21,7 +21,7 @@ def preferences(questions, ingredients):
     '''determine the drink preference of the pirate'''
     pirate_pref = {}
     print("answer yes or no")
-    for idx,val in questions.items():
+    for idx, val in questions.items():
         pref = input("{} ".format(val))
 
         if pref.lower() == 'yes':
@@ -29,18 +29,19 @@ def preferences(questions, ingredients):
         else:
             pirate_pref[idx] = False
 
-
     build_drink(pirate_pref, ingredients)
+
 
 def build_drink(pref, ingredients):
     '''accepts preferences and creates a random drink based on them'''
     drink = []
 
-    for idx,val in pref.items():
+    for idx, val in pref.items():
         if val == True:
             drink.append(random.choice(ingredients[idx]))
 
     present_drink(drink)
+
 
 def name_drink(name_length):
     words = ['Ahoy', 'Aye', 'Booty', 'Blimey', 'Coffer', 'Hearties', 'Mutiny', 'Salty', 'Squiffy', 'Yo Ho Ho', 'Ye']
@@ -54,10 +55,12 @@ def name_drink(name_length):
     drink_name = ' '.join(drink_name)
     return drink_name
 
+
 def present_drink(ingred):
     '''Presents the drink to customer'''
     if len(ingred) == 5:
-        print("Let's take a {}, {}, {}, {}, and finally {}!".format(ingred[0],ingred[1],ingred[2],ingred[3],ingred[4]))
+        print(
+        "Let's take a {}, {}, {}, {}, and finally {}!".format(ingred[0], ingred[1], ingred[2], ingred[3], ingred[4]))
     elif len(ingred) == 4:
         print("In that case a {}, {}, {}, and finally {}.".format(ingred[0], ingred[1], ingred[2], ingred[3]))
     elif len(ingred) == 3:
