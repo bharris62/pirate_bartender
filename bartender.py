@@ -20,10 +20,9 @@ ingredients = {
 def preferences(questions, ingredients):
     '''determine the drink preference of the pirate'''
     pirate_pref = {}
-
+    print("answer yes or no")
     for idx,val in questions.items():
-        print("yes or no?  ")
-        pref = input(val)
+        pref = input("{} ".format(val))
 
         if pref.lower() == 'yes':
             pirate_pref[idx] = True
@@ -74,5 +73,14 @@ def present_drink(ingred):
 
 
 if __name__ == '__main__':
+    drink_number = 0
+    while True:
+        drink_number += 1
+        if drink_number == 5:
+            print('We are responsible pirates, gotta cut you off! ')
         preferences(questions, ingredients)
-
+        ans = input("Like another? had {} drink ".format(drink_number))
+        if ans.lower() == 'no':
+            break
+        else:
+            preferences(questions, ingredients)
