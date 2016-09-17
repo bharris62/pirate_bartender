@@ -63,15 +63,15 @@ def build_drink(pref, mix):
 
 
 def name_drink(name_length):
-    words = ['Ahoy', 'Aye', 'Booty', 'Blimey', 'Coffer', 'Hearties', 'Mutiny', 'Salty', 'Squiffy', 'Yo Ho Ho', 'Ye']
+    adjectives = ['Feared', 'Evil', '', 'Dusty', 'Salty', 'Colossal', 'Cuddly']
+    nouns = ['Cannon', 'Flag', 'Ship', 'Hook', 'Hurricane', 'Marauder', 'Pistol', 'Dog']
 
     drink_name = []
-    iteration = 0
-    while iteration < name_length:
-        drink_name.append(random.choice(words))
-        iteration += 1
 
+    drink_name.append(random.choice(adjectives))
+    drink_name.append(random.choice(nouns))
     drink_name = ' '.join(drink_name)
+
     return drink_name
 
 
@@ -91,7 +91,7 @@ def present_drink(ingred):
     else:
         print("You are at the wrong place!")
 
-    print("And We will call it '{}'".format(name_drink(len(ingred))))
+    print("And We will call it 'The {}'".format(name_drink(len(ingred))))
 
 
 if __name__ == '__main__':
