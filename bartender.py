@@ -62,14 +62,12 @@ def build_drink(pref, mix):
     present_drink(drink)
 
 
-def name_drink(name_length):
+def name_drink():
+    '''Creating a random drink name based on a adjective and a noun'''
     adjectives = ['Feared', 'Evil', '', 'Dusty', 'Salty', 'Colossal', 'Cuddly']
     nouns = ['Cannon', 'Flag', 'Ship', 'Hook', 'Hurricane', 'Marauder', 'Pistol', 'Dog']
 
-    drink_name = []
-
-    drink_name.append(random.choice(adjectives))
-    drink_name.append(random.choice(nouns))
+    drink_name = [random.choice(adjectives), random.choice(nouns)]
     drink_name = ' '.join(drink_name)
 
     return drink_name
@@ -91,7 +89,7 @@ def present_drink(ingred):
     else:
         print("You are at the wrong place!")
 
-    print("And We will call it 'The {}'".format(name_drink(len(ingred))))
+    print("And We will call it 'The {}'".format(name_drink()))
 
 
 if __name__ == '__main__':
