@@ -18,31 +18,25 @@ ingredients = {
 }
 
 
-def yes_or_no(resp):
-        '''Error checking function, for yes or no questions.'''
-        try:
-            if resp.lower() == 'y' or resp == 'yes':
+def yes_or_no(question):
+        """Error checking function, for yes or no questions."""
+
+        while True:
+            resp = input("{} ".format(question)).lower()
+            if resp == 'y' or resp == 'yes':
                 return 'yes'
-            elif resp.lower() == 'n' or resp == 'no':
+            elif resp == 'n' or resp == 'no':
                 return 'no'
             else:
                 print("Remember, yes or no.")
 
-        except ValueError:
-            print("Must be answered in yes or no.")
-
 
 def preferences(questions, ingredients):
-    '''determine the drink preference of the pirate'''
+    """determine the drink preference of the pirate"""
     pirate_pref = {}
     print("answer yes or no")
     for idx, val in questions.items():
-        while True:
-            pref = input("{} ".format(val))
-            check_response = yes_or_no(pref)
-            if check_response == 'yes' or check_response == 'no':
-                break
-
+        pref = yes_or_no(val)
         if pref.lower() == 'yes':
             pirate_pref[idx] = True
         else:
@@ -52,19 +46,19 @@ def preferences(questions, ingredients):
 
 
 def build_drink(pref, mix):
-    '''accepts preferences and creates a random drink based on them'''
+    """accepts preferences and creates a random drink based on them"""
     drink = []
 
     for idx, val in pref.items():
-        if val == True:
+        if val:
             drink.append(random.choice(mix[idx]))
 
     present_drink(drink)
 
 
 def name_drink():
-    '''Creating a random drink name based on a adjective and a noun'''
-    adjectives = ['Feared', 'Evil', '', 'Dusty', 'Salty', 'Colossal', 'Cuddly']
+    """Creating a random drink name based on a adjective and a noun"""
+    adjectives = ['Feared', 'Evil', 'Dusty', 'Salty', 'Colossal', 'Cuddly']
     nouns = ['Cannon', 'Flag', 'Ship', 'Hook', 'Hurricane', 'Marauder', 'Pistol', 'Dog']
 
     drink_name = [random.choice(adjectives), random.choice(nouns)]
@@ -74,7 +68,7 @@ def name_drink():
 
 
 def present_drink(ingred):
-    '''Presents the drink to customer'''
+    """Presents the drink to customer"""
     if len(ingred) == 5:
         print(
         "Let's take a {}, {}, {}, {}, and finally {}!".format(ingred[0], ingred[1], ingred[2], ingred[3], ingred[4]))
@@ -99,8 +93,7 @@ if __name__ == '__main__':
         drink_number += 1
 
     while True:
-        ans = input("Like another? had {} drink(s) ".format(drink_number))
-        temp_ans = yes_or_no(ans)
+        temp_ans = yes_or_no("Like another? had {} drink(s) ".format(drink_number))
 
         if temp_ans == 'no':
             break
